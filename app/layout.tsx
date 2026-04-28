@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Nav from "@/components/Nav";
+import Sidebar from "@/components/Sidebar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -31,10 +32,11 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col">
         <Nav />
-        <main className="max-w-2xl mx-auto px-6 py-12 w-full flex-1">
-          {children}
-        </main>
-        <footer className="max-w-2xl mx-auto px-6 py-8 w-full">
+        <div className="max-w-3xl mx-auto px-6 py-12 w-full flex-1 flex flex-col sm:flex-row gap-10 sm:gap-14">
+          <Sidebar />
+          <main className="flex-1 min-w-0">{children}</main>
+        </div>
+        <footer className="max-w-3xl mx-auto px-6 pb-8 w-full">
           <p className="text-sm text-[var(--muted)]">
             © {new Date().getFullYear()} Calvin Isch
           </p>
