@@ -52,9 +52,7 @@ export default function PapersPage() {
                       ))}
                       .
                     </p>
-                    <p className="text-sm mb-0.5">
-                      &ldquo;{paper.title}.&rdquo;
-                    </p>
+                    <h3 className="font-medium text-base mb-0.5">{paper.title}</h3>
                     <p className="text-sm text-[var(--muted)] mb-1.5">{paper.venue}</p>
                     {paper.links.length > 0 && (
                       <div className="flex gap-3">

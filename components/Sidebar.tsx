@@ -5,8 +5,9 @@ import {
   FaLinkedin,
   FaGithub,
   FaFileAlt,
+  FaFilePdf,
 } from "react-icons/fa";
-import { SiGooglescholar } from "react-icons/si";
+import { SiGooglescholar, SiSemanticscholar, SiOrcid } from "react-icons/si";
 
 const socialLinks = [
   {
@@ -18,6 +19,16 @@ const socialLinks = [
     label: "Google Scholar",
     href: bio.links.googleScholar,
     icon: SiGooglescholar,
+  },
+  {
+    label: "Semantic Scholar",
+    href: bio.links.semanticScholar,
+    icon: SiSemanticscholar,
+  },
+  {
+    label: "ORCID",
+    href: bio.links.orcid,
+    icon: SiOrcid,
   },
   {
     label: "LinkedIn",
@@ -33,6 +44,11 @@ const socialLinks = [
     label: "CV",
     href: bio.links.cv,
     icon: FaFileAlt,
+  },
+  {
+    label: "Resume",
+    href: bio.links.resume,
+    icon: FaFilePdf,
   },
 ];
 

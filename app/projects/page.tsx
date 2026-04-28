@@ -16,10 +16,20 @@ export default function ProjectsPage() {
         <ul className="space-y-8 list-none m-0 p-0">
           {projects.map((project, i) => (
             <li key={i} className="border-b border-[var(--border)] pb-8 last:border-0 last:pb-0">
-              <div className="flex items-baseline justify-between gap-4 mb-1">
-                <h2 className="font-semibold text-base">{project.title}</h2>
-                <span className="text-sm text-[var(--muted)] shrink-0">{project.year}</span>
-              </div>
+              <h2 className="font-semibold text-base mb-1">
+                {(() => {
+                  const internal = project.links.find((l) => !l.href.startsWith("http"));
+                  return internal ? (
+                    <a
+                      href={internal.href}
+                      className="hover:underline underline-offset-2"
+                      style={{ textDecoration: "none" }}
+                    >
+                      {project.title}
+                    </a>
+                  ) : project.title;
+                })()}
+              </h2>
 
               <p className="text-sm leading-relaxed text-[var(--foreground)] mb-3 max-w-prose">
                 {project.description}
@@ -40,18 +50,21 @@ export default function ProjectsPage() {
 
               {project.links.length > 0 && (
                 <div className="flex gap-3">
-                  {project.links.map((link) => (
-                    <a
-                      key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
-                      style={{ textDecoration: "none" }}
-                    >
-                      [{link.label}]
-                    </a>
-                  ))}
+                  {project.links.map((link) => {
+                    const external = link.href.startsWith("http");
+                    return (
+                      <a
+                        key={link.label}
+                        href={link.href}
+                        target={external ? "_blank" : undefined}
+                        rel={external ? "noopener noreferrer" : undefined}
+                        className="text-sm text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                        style={{ textDecoration: "none" }}
+                      >
+                        [{link.label}]
+                      </a>
+                    );
+                  })}
                 </div>
               )}
             </li>

@@ -3,7 +3,6 @@ export interface Project {
   description: string;
   tags: string[];
   links: { label: string; href: string }[];
-  year: number;
 }
 
 export interface Paper {
@@ -39,9 +38,12 @@ export const bio = {
   links: {
     googleScholar:
       "https://scholar.google.com/citations?user=3VodZV4AAAAJ&hl=en",
+    semanticScholar: "https://www.semanticscholar.org/author/Calvin-Isch/2047697310",
+    orcid: "https://orcid.org/0000-0003-1669-0918",
     linkedin: "https://www.linkedin.com/in/calvin-isch/",
     github: "https://github.com/CalvinIsch",
     cv: "/CV_Calvin_Isch.pdf",
+    resume: "/Resume_Calvin_Isch.pdf",
   },
 };
 
@@ -52,7 +54,18 @@ export const news: NewsItem[] = [
   },
 ];
 
-export const projects: Project[] = [];
+export const projects: Project[] = [
+  {
+    title: "OpenSermon",
+    description:
+      "A large-scale database and dashboard for exploring American church sermons. The project involves scraping sermon media, transcribing audio and video, using LLMs to analyze sermon content, and building interactive visualizations of religious communication in the U.S.",
+    tags: ["Web Scraping", "Speech-to-Text", "LLMs", "Data Visualization", "Computational Social Science"],
+    links: [
+      { label: "Project Page", href: "/projects/opensermon" },
+      { label: "Site", href: "https://open-sermon.com" },
+    ],
+  },
+];
 
 const gs = (id: string) =>
   `https://scholar.google.com/citations?view_op=view_citation&hl=en&user=3VodZV4AAAAJ&citation_for_view=3VodZV4AAAAJ:${id}`;
@@ -64,14 +77,14 @@ export const papers: Paper[] = [
       "Experimental Evidence that Social Learning in Structured Information-Sharing Networks Corrects Anchoring Bias",
     venue: "Journal of Social Computing, 7(1), 3–13.",
     year: 2026,
-    links: [{ label: "Paper", href: gs("Zph67rFs4hoC") }],
+    links: [{ label: "Paper", href: gs("Zph67rFs4hoC") }, { label: "PDF", href: "/papers/experimental_evidence_networks.pdf" }],
   },
   {
     authors: ["C.J. Clark", "Calvin Isch", "A. Shariff"],
     title: "Why do organizations take political stances? A review of reasons and risks",
     venue: "Social and Personality Psychology Compass, 18(7), e12985.",
     year: 2024,
-    links: [{ label: "Paper", href: gs("hqOjcs7Dif8C") }],
+    links: [{ label: "Paper", href: gs("hqOjcs7Dif8C") }, { label: "PDF", href: "/papers/why_orgs_political.pdf" }],
   },
   {
     authors: ["C.J. Clark", "Calvin Isch", "P. Connor", "P.E. Tetlock"],
@@ -86,7 +99,7 @@ export const papers: Paper[] = [
       "Reflections on adversarial collaboration from the adversaries: was it worth it?",
     venue: "Theory and Society, 1–18.",
     year: 2025,
-    links: [{ label: "Paper", href: gs("MXK_kJrjxJIC") }],
+    links: [{ label: "Paper", href: gs("MXK_kJrjxJIC") }, { label: "PDF", href: "/papers/adcollabs.pdf" }],
   },
   {
     authors: ["Calvin Isch"],
@@ -94,7 +107,7 @@ export const papers: Paper[] = [
       "Media bias in portrayals of mortality risks: Comparison of newspaper coverage to death rates",
     venue: "Social Science & Medicine, 364, 117542.",
     year: 2025,
-    links: [{ label: "Paper", href: gs("5nxA0vEk-isC") }],
+    links: [{ label: "Paper", href: gs("5nxA0vEk-isC") }, { label: "PDF", href: "/papers/media_bias_mortality.pdf" }],
   },
   {
     authors: ["Calvin Isch", "R. Brown", "P.M. Todd", "A. Aktipis", "G. Pepper"],
@@ -102,7 +115,7 @@ export const papers: Paper[] = [
       "Objective risk exposure, perceived uncontrollable mortality risk, and health behaviors",
     venue: "Journal of Public Health, 33(1), 11–21.",
     year: 2025,
-    links: [{ label: "Paper", href: gs("WF5omc3nYNoC") }],
+    links: [{ label: "Paper", href: gs("WF5omc3nYNoC") }, { label: "PDF", href: "/papers/objective_risks_uncontrollable.pdf" }],
   },
   {
     authors: ["C. Clark", "Calvin Isch", "J. Everett", "A. Shariff"],
@@ -110,7 +123,7 @@ export const papers: Paper[] = [
       "Politicization undermines trust in institutions, even among the ideologically aligned public",
     venue: "2023.",
     year: 2023,
-    links: [{ label: "Paper", href: gs("LkGwnXOMwfcC") }],
+    links: [{ label: "Paper", href: gs("LkGwnXOMwfcC") }, { label: "PDF", href: "/papers/politicization_trust.pdf" }],
   },
   {
     authors: [
@@ -125,21 +138,21 @@ export const papers: Paper[] = [
     title: "Identities as predictors of vaccine hesitancy during the COVID‐19 pandemic",
     venue: "Journal of Social Issues, 79(2), 556–577.",
     year: 2023,
-    links: [{ label: "Paper", href: gs("Y0pCki6q_DkC") }],
+    links: [{ label: "Paper", href: gs("Y0pCki6q_DkC") }, { label: "PDF", href: "/papers/identities_predictors.pdf" }],
   },
   {
     authors: ["C.J. Clark", "P. Connor", "Calvin Isch"],
     title: "Failing to replicate predicts citation declines in psychology",
     venue: "Proceedings of the National Academy of Sciences, 120(29), e2304862120.",
     year: 2023,
-    links: [{ label: "Paper", href: gs("ufrVoPGSRksC") }],
+    links: [{ label: "Paper", href: gs("ufrVoPGSRksC") }, { label: "PDF", href: "/papers/clark-et-al-2023-failing-to-replicate-predicts-citation-declines-in-psychology.pdf" }],
   },
   {
     authors: ["Calvin Isch", "M. Ten Thij", "P.M. Todd", "J. Bollen"],
     title: "Quantifying changes in societal optimism from online sentiment",
     venue: "Behavior Research Methods, 55(1), 176–184.",
     year: 2023,
-    links: [{ label: "Paper", href: gs("qjMakFHDy7sC") }],
+    links: [{ label: "Paper", href: gs("qjMakFHDy7sC") }, { label: "PDF", href: "/papers/societal_optimism.pdf" }],
   },
   {
     authors: [
@@ -161,7 +174,7 @@ export const papers: Paper[] = [
       "Back to the Future Consequences: Consideration of Future Consequences (CFC) Measure Correlates with Exercise Intensity",
     venue: "IU Journal of Undergraduate Research, 5(1), 52–57.",
     year: 2019,
-    links: [{ label: "Paper", href: gs("zYLM7Y9cAGgC") }],
+    links: [{ label: "Paper", href: gs("zYLM7Y9cAGgC") }, { label: "PDF", href: "/papers/isch_consideration_future_consequences.pdf" }],
   },
 ];
 
