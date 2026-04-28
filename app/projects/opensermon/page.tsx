@@ -19,7 +19,11 @@ export default function OpenSermonPage() {
 
       <h1 className="text-xl font-semibold mb-2">OpenSermon</h1>
       <p className="text-sm text-[var(--muted)] mb-8">
-        With Tucker ·{" "}
+        With{" "}
+          <a href="https://github.com/tdmiller1" target="_blank" rel="noopener noreferrer">
+            Tucker
+          </a>{" "}
+          ·{" "}
         <a href="https://open-sermon.com" target="_blank" rel="noopener noreferrer">
           open-sermon.com
         </a>
@@ -67,7 +71,11 @@ export default function OpenSermonPage() {
         </p>
 
         <p>
-          To respond to this opportunity, my friend Tucker and I are building OpenSermon,
+          To respond to this opportunity, my friend{" "}
+          <a href="https://github.com/tdmiller1" target="_blank" rel="noopener noreferrer">
+            Tucker
+          </a>{" "}
+          and I are building OpenSermon,
           targeting two aims. First, we are building a systematic database of American
           church sermons: identifying congregations, locating published sermon media,
           transcribing the content, and organizing it into a unified corpus that is open to
