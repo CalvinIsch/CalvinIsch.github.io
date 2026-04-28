@@ -35,8 +35,6 @@ export const bio = {
   affiliation: "University of Pennsylvania",
   department: "Annenberg School for Communication",
   role: "PhD Student",
-  description:
-    "I am a PhD student at the Annenberg School for Communication at the University of Pennsylvania. My research sits at the intersection of computational social science, political communication, and natural language processing. I study how people produce and consume information online.",
   email: "calvin.isch@asc.upenn.edu",
   links: {
     googleScholar:
@@ -178,7 +176,7 @@ export const talks: Talk[] = [
   {
     title: "Quantifying the prevalence of overreaching causal language in the social sciences",
     event: "SCIFY, DARPA Research Group",
-    location: "",
+    location: "Philadelphia, PA",
     date: "September 2025",
     links: [],
   },
@@ -192,14 +190,14 @@ export const talks: Talk[] = [
   {
     title: "Quantifying the prevalence of overreaching causal language in the social sciences",
     event: "International Conference on Computational Social Science",
-    location: "Sweden",
+    location: "Norrköping, Sweden",
     date: "July 2025",
     links: [],
   },
   {
     title: "Media bias in portrayals of Mortality Risk",
     event: "International Conference on Computational Social Science",
-    location: "Sweden",
+    location: "Norrköping, Sweden",
     date: "July 2025",
     links: [],
   },
@@ -220,14 +218,14 @@ export const talks: Talk[] = [
   {
     title: "Narrative License in the Social Sciences",
     event: "International Conference on Computational Social Science",
-    location: "University of Pennsylvania",
+    location: "Philadelphia, PA",
     date: "July 2024",
     links: [],
   },
   {
     title: "Narrative License in the Social Sciences: An Exploration with GPT-4.0",
     event: "AIMOS Conference",
-    location: "QUT, Brisbane, AU",
+    location: "QUT, Brisbane, Australia",
     date: "November 2023",
     links: [],
   },
@@ -269,7 +267,7 @@ export const talks: Talk[] = [
   {
     title: "Community mask wearing and COVID prevalence",
     event: "COVID-Sociality Group",
-    location: "",
+    location: "Online",
     date: "August 2020",
     links: [],
   },
@@ -281,7 +279,7 @@ export const talks: Talk[] = [
     links: [],
   },
   {
-    title: "Measuring psychological distance with twitter data",
+    title: "Measuring psychological distance with Twitter data",
     event: "IUJUR Research Slam",
     location: "Virtual",
     date: "March 2020",
@@ -304,7 +302,7 @@ export const talks: Talk[] = [
   {
     title: "Skilled technical workers / Innovation with OSS",
     event: "Data Science for Public Good Symposium",
-    location: "",
+    location: "UVA, Arlington, VA",
     date: "August 2019",
     links: [],
   },
@@ -318,7 +316,7 @@ export const talks: Talk[] = [
   {
     title: "Meat O'Vision: The effects of hunger on perception",
     event: "Midwest Undergraduate Cognitive Science Conference",
-    location: "",
+    location: "Indiana University, Bloomington, IN",
     date: "April 2018",
     links: [],
   },
