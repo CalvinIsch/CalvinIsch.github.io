@@ -72,6 +72,14 @@ const gs = (id: string) =>
 
 export const papers: Paper[] = [
   {
+    authors: ["Calvin Isch", "G. Jennings"],
+    title:
+      "Narrative License and Model Sycophancy in LLM Summaries of Scientific Work",
+    venue: "To Appear in Proceedings of the 2026 Conference of the Association for Computational Linguistics (ACL).",
+    year: 2026,
+    links: [{ label: "PDF", href: "/papers/1726_Narrative_License_and_Mod.pdf" }],
+  },
+  {
     authors: ["Calvin Isch", "D. Centola"],
     title:
       "Experimental Evidence that Social Learning in Structured Information-Sharing Networks Corrects Anchoring Bias",
