@@ -188,6 +188,13 @@ export const papers: Paper[] = [
 
 export const talks: Talk[] = [
   {
+    title: "Politics and Causal Overreach in the Behavioral Sciences",
+    event: "Behavioral Science Speakeasy",
+    location: "American Enterprise Institute (AEI), Washington, DC",
+    date: "May 2026",
+    links: [],
+  },
+  {
     title: "Media portrayals of mortality risks ∥ Using large language models for large-scale qualitative analysis",
     event: "New(s) Knowledge: From Research to Intelligence",
     location: "MIT",
