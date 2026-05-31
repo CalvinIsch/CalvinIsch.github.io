@@ -72,6 +72,14 @@ const gs = (id: string) =>
 
 export const papers: Paper[] = [
   {
+    authors: ["Calvin Isch", "Timothy Dorr", "Neil Fasching", "Grace Jennings", "Duncan J. Watts"],
+    title:
+      "Quantifying the prevalence and impact of overreaching causal claims in social science",
+    venue: "To appear in Nature Human Behaviour.",
+    year: 2026,
+    links: [{ label: "PDF", href: "/papers/Causal_Claims_in_Social_Science_Main.pdf" }],
+  },
+  {
     authors: ["Calvin Isch", "G. Jennings"],
     title:
       "Narrative License and Model Sycophancy in LLM Summaries of Scientific Work",
