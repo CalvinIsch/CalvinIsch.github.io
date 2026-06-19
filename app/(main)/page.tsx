@@ -18,6 +18,10 @@ export default function Home() {
           <a href="https://css.seas.upenn.edu/" target="_blank" rel="noopener noreferrer">
             Computational Social Science Lab
           </a>{" "}
+          along with{" "}
+          <a href="https://www.coryjclark.com/" target="_blank" rel="noopener noreferrer">
+            Cory Clark
+          </a>{" "}
           and{" "}
           <a href="https://en.wikipedia.org/wiki/Philip_E._Tetlock" target="_blank" rel="noopener noreferrer">
             Phil Tetlock
@@ -35,16 +39,22 @@ export default function Home() {
             Narrative License
           </a>
           ,&rdquo; favoring simple stories over evidentiary restraint, and I explore this
-          at scale through computational analysis, experiments, and survey research. I also
+          at scale through computational analysis, experiments, and survey research. I am particularly interested in areas where AI can 
+          support faithful science communication, and where it may instead exhibit{" "}
+          <a href="http://localhost:3000/papers/1726_Narrative_License_and_Mod.pdf" target="_blank" rel="noopener noreferrer">
+            sycophantic narrative license
+          </a>
+          ,
+          subtly distorting evidence to flatter people's priors. I also
           explore methodological reforms to improve science communication, such as{" "}
           <a href="https://doi.org/10.1007/s11186-025-09634-2" target="_blank" rel="noopener noreferrer">
             adversarial collaborations
           </a>
-          ,{" "}
+          {" "}and{" "}
           <a href="https://doi.org/10.1073/pnas.2304862120" target="_blank" rel="noopener noreferrer">
             Open Science
           </a>
-          , and AI-integrated workflows.
+          . 
         </p>
         <p>
           Additionally, I have a long-standing research interest in how people think about

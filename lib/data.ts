@@ -196,6 +196,13 @@ export const papers: Paper[] = [
 
 export const talks: Talk[] = [
   {
+    title: "Awe, Agency, and the Future of Humanity",
+    event: "Cooperative Futures Institute",
+    location: "ASU / San Francisco",
+    date: "June 2026",
+    links: [],
+  },
+  {
     title: "Politics and Causal Overreach in the Behavioral Sciences",
     event: "Behavioral Science Speakeasy",
     location: "American Enterprise Institute (AEI), Washington, DC",
