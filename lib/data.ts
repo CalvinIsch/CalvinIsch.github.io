@@ -85,17 +85,17 @@ export const papers: Paper[] = [
     authors: ["Calvin Isch", "Timothy Dorr", "Neil Fasching", "Grace Jennings", "Duncan J. Watts"],
     title:
       "Quantifying the prevalence and impact of overreaching causal claims in social science",
-    venue: "To appear in Nature Human Behaviour.",
+    venue: "Nature Human Behaviour, 1–16.",
     year: 2026,
-    links: [{ label: "PDF", href: "/papers/Causal_Claims_in_Social_Science_Main.pdf" }],
+    links: [{ label: "Paper", href: "https://doi.org/10.1038/s41562-026-02553-x" }, { label: "PDF", href: "/papers/Causal_Claims_in_Social_Science_Main.pdf" }],
   },
   {
     authors: ["Calvin Isch", "G. Jennings"],
     title:
       "Narrative License and Model Sycophancy in LLM Summaries of Scientific Work",
-    venue: "To Appear in Proceedings of the 2026 Conference of the Association for Computational Linguistics (ACL).",
+    venue: "Proceedings of the 64th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), 16418–16432.",
     year: 2026,
-    links: [{ label: "PDF", href: "/papers/1726_Narrative_License_and_Mod.pdf" }],
+    links: [{ label: "Paper", href: "https://doi.org/10.18653/v1/2026.acl-long.746" }, { label: "PDF", href: "/papers/1726_Narrative_License_and_Mod.pdf" }],
   },
   {
     authors: ["Calvin Isch", "D. Centola"],
@@ -205,6 +205,13 @@ export const papers: Paper[] = [
 ];
 
 export const talks: Talk[] = [
+  {
+    title: "Narrative License in Scientific Writing and LLM Summaries of Scholarship",
+    event: "Cognitive Science CogLunch",
+    location: "Indiana University, Bloomington, IN",
+    date: "October 2026",
+    links: [],
+  },
   {
     title: "Awe, Agency, and the Future of Humanity",
     event: "Cooperative Futures Institute",
