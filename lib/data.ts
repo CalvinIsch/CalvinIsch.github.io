@@ -56,6 +56,16 @@ export const news: NewsItem[] = [
 
 export const projects: Project[] = [
   {
+    title: "NL Detector",
+    description:
+      "A platform for finding narrative license in academic writing. Users can upload papers, highlight and comment on passages, and run LLM prompts that check for specific forms of overclaiming, such as causal overreach and overgeneralization.",
+    tags: ["LLMs", "Metascience", "Science Communication", "Web Development"],
+    links: [
+      { label: "Project Page", href: "/projects/nl-detector" },
+      { label: "Site", href: "https://nl-detector.calvinisch.com" },
+    ],
+  },
+  {
     title: "OpenSermon",
     description:
       "A large-scale database and dashboard for exploring American church sermons. The project involves scraping sermon media, transcribing audio and video, using LLMs to analyze sermon content, and building interactive visualizations of religious communication in the U.S.",
