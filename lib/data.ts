@@ -56,6 +56,16 @@ export const news: NewsItem[] = [
 
 export const projects: Project[] = [
   {
+    title: "Garden of Forking Chatbots",
+    description:
+      "A platform for exploring how LLMs answer empirical questions differently depending on who asks. Follow three simulated users with opposing views and see whether models give evidence or tell people what they want to hear.",
+    tags: ["LLMs", "Science Communication", "Sycophancy", "Data Visualization"],
+    links: [
+      { label: "Project Page", href: "/projects/garden-of-forking-chatbots" },
+      { label: "Site", href: "/garden-of-forking-chatbots.html" },
+    ],
+  },
+  {
     title: "NL Detector",
     description:
       "A platform for finding narrative license in academic writing. Users can upload papers, highlight and comment on passages, and run LLM prompts that check for specific forms of overclaiming, such as causal overreach and overgeneralization.",
