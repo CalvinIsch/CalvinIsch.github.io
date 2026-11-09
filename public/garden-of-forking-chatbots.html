@@ -53,7 +53,7 @@ a { color: inherit; }
 
 /* ---------- app shell ---------- */
 .app { min-height: 100vh; background: var(--surface); }
-.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: 12px; height: var(--header); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); background: var(--surface); border-bottom: 1px solid var(--hair); }
+.topbar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(max-content, 1fr); align-items: center; gap: 12px; height: var(--header); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); background: var(--surface); border-bottom: 1px solid var(--hair); }
 .topbar .grow { flex: 1; }
 .tb-left, .tb-right, .tb-row { display: flex; align-items: center; gap: 6px; min-width: 0; }
 .tb-right { justify-content: flex-end; }
@@ -62,6 +62,16 @@ a { color: inherit; }
 .brand b { font-weight: 800; font-size: 16px; letter-spacing: -.005em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .brand .icon-btn.help { width: 28px; height: 28px; color: var(--muted); margin-left: -2px; }
 .brand .icon-btn.help svg { width: 18px; height: 18px; }
+/* .topbar: the right column never shrinks below its controls, so when space is tight the topic menu shifts left
+   (and the title ellipsizes) instead of the controls sliding underneath it */
+/* link back to calvinisch.com: "← Calvin's Website" on wide screens, a back arrow (in place of the glyph) at 1160px and below */
+.home-link { flex: none; display: inline-flex; align-items: center; gap: 5px; color: var(--muted); font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap; border-radius: 6px; }
+.home-link:hover { color: var(--ink); }
+.home-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.home-link span { padding-top: 2px; }
+.brand .home-link.icon-btn { width: 30px; height: 30px; margin-left: -6px; margin-right: -4px; }
+.brand .home-link.icon-btn svg { width: 19px; height: 19px; }
+.crumb-sep { flex: none; width: 1px; height: 20px; background: var(--hair); margin: 0 6px; }
 .glyph { flex: none; overflow: visible; }
 .glyph path { fill: none; stroke: var(--ink); stroke-width: 5; stroke-linecap: round; stroke-linejoin: round; }
 .glyph circle.start { fill: var(--ink); }
@@ -838,6 +848,7 @@ const I = {
   help: html`<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.3a2.5 2.5 0 0 1 4.8.9c0 1.7-2.4 2.1-2.4 3.6M12 17h.01"/></svg>`,
   memory: html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4z"/></svg>`,
   follow: html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h12"/><path d="m12 6 6 6-6 6"/></svg>`,
+  back: html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H7"/><path d="m12 6-6 6 6 6"/></svg>`,
   spark: html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M6 18l2.5-2.5M15.5 8.5 18 6"/></svg>`,
   note: html`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>`,
 };
@@ -906,13 +917,11 @@ function StanceScale({ topic, pts, wide }) {
 }
 
 /* ---------- splash ---------- */
-const SPLASH_KEY = 'gfc3-splash-seen';
-function splashSeen() { try { return sessionStorage.getItem(SPLASH_KEY) === '1'; } catch (e) { return false; } }
-function markSplashSeen() { try { sessionStorage.setItem(SPLASH_KEY, '1'); } catch (e) { } }
+// shown on every page load (not remembered per session); topic switches and "Start over" never reopen it
 function Splash({ replay, onDone }) {
   const [leaving, setLeaving] = useState(false);
   const left = useRef(false), btn = useRef();
-  const finish = () => { if (left.current) return; left.current = true; markSplashSeen(); setLeaving(true); setTimeout(onDone, REDUCED ? 0 : 340); };
+  const finish = () => { if (left.current) return; left.current = true; setLeaving(true); setTimeout(onDone, REDUCED ? 0 : 340); };
   useEffect(() => {
     btn.current && btn.current.focus({ preventScroll: true });
     const onKey = e => { if (e.key === 'Escape') finish(); };
@@ -1659,7 +1668,7 @@ function App() {
   const firstTopic = (D.takeaways && D.takeaways.order || []).find(hasTopic) || (D.topics.find(t => hasTopic(t.id)) || D.topics[0]).id;
   const [s, setS] = useState(() => ({
     topic: firstTopic, model: modelsForTopic(firstTopic)[0] || GRID_MODELS[0], memory: true, follow: null, branch: null,
-    step: 0, playing: -1, busy: false, theme: loadTheme(), vw: window.innerWidth, splash: splashSeen() ? null : 'intro', panel: null, toast: null, sent: false,
+    step: 0, playing: -1, busy: false, theme: loadTheme(), vw: window.innerWidth, splash: 'intro', panel: null, toast: null, sent: false,
     dock: null, activeEx: 1, threadOnScreen: true,
   }));
   const sRef = useRef(s); sRef.current = s;
@@ -1783,19 +1792,28 @@ function App() {
   const awaitingFork = lastShown && lastShown.k === 'fork' && !s.branch;
   const sendHint = !s.busy && nextBeat && nextBeat.k === 'turn' && nextBeat.ex === 2 && s.follow;
 
-  const brand = html`<div class="brand"><${Glyph} size=${narrow ? 20 : 22}/><b>${D.meta.title}</b>
+  // link back to calvinisch.com: "← Calvin's Website | [glyph] title" when there's room (above 1160px, so the
+  // title isn't cut even with the longest topic name); below that a back arrow takes the glyph's place
+  const home = s.vw > 1160
+    ? html`<a class="home-link" href="/" title="Back to calvinisch.com">${I.back}<span>Calvin’s Website</span></a><span class="crumb-sep" aria-hidden="true"></span><${Glyph} size=${22}/>`
+    : html`<a class="home-link icon-btn" href="/" aria-label="Back to Calvin Isch's website" title="Back to calvinisch.com">${I.back}</a>`;
+  const brand = html`<div class="brand">${home}<b>${D.meta.title}</b>
     <button class="icon-btn help" aria-label="What is this?" title="What is this?" onClick=${() => set({ splash: 'replay' })}>${I.help}</button></div>`;
-  const topicMenu = html`<${Menu} label=${html`${!narrow && html`<span class="topic-lab">Topic:</span>`}<span class="topic-name">${topic.short || topic.title}</span>`} ariaLabel="Topic" align=${narrow ? 'left' : 'center'} cls="topic-btn">
+  // below 960px the one-row header uses the phone labels (no "Topic:", short model name) so the title still fits
+  const compact = s.vw < 960;
+  const topicMenu = html`<${Menu} label=${html`${!compact && html`<span class="topic-lab">Topic:</span>`}<span class="topic-name">${topic.short || topic.title}</span>`} ariaLabel="Topic" align=${narrow ? 'left' : 'center'} cls="topic-btn">
     ${close => html`<${Fragment}><div class="menu-label">Topic</div>
       ${D.topics.map(t => { const ok = hasTopic(t.id); return html`<button class="menu-item" role="menuitemradio" aria-checked=${t.id === s.topic} disabled=${!ok} onClick=${() => { if (!ok) return; switchTopic(t.id); close(); }}><i class="bar" style=${t.id === s.topic ? 'background:var(--ink)' : ''}></i><span><b>${t.title}</b><span class="meta">${ok ? `“${t.opening.length > 60 ? t.opening.slice(0, 58) + '…' : t.opening}”` : 'Comes with the full run'}</span></span></button>`; })}
     <//>`}
   <//>`;
-  const modelMenu = html`<${Menu} label=${html`<i class="dot" style=${`background:${model.color}`}></i><span>${narrow ? model.short : model.label}</span>`} ariaLabel="Model" align=${narrow ? 'left' : 'right'}>
+  const modelMenu = html`<${Menu} label=${html`<i class="dot" style=${`background:${model.color}`}></i><span>${compact ? model.short : model.label}</span>`} ariaLabel="Model" align=${narrow ? 'left' : 'right'}>
     ${close => html`<${Fragment}><div class="menu-label">Model</div>
       ${D.meta.models.filter(m => m.role === 'grid').map(m => { const ok = modelsForTopic(s.topic).includes(m.key); return html`<button class="menu-item" role="menuitemradio" aria-checked=${m.key === s.model} disabled=${!ok} onClick=${() => { if (!ok) return; switchModel(m.key); close(); }}><i class="dot" style=${`background:${m.color}`}></i><span><b>${m.label}</b>${!ok && html`<span class="meta">Comes with the full run</span>`}</span></button>`; })}
     <//>`}
   <//>`;
   const memToggle = html`<button class="mem-toggle" role="switch" aria-checked=${s.memory} onClick=${toggleMemory} title=${s.memory ? 'The model sees each person\u2019s saved memories' : 'The model knows nothing about who is asking'}><span class="switch small" aria-hidden="true"></span><span>Memory</span></button>`;
+  // the one-row header shows this only at >= 1400px: narrower, it collides with the centered topic menu
+  // (the "Who's asking" button beside the people in the thread is still there)
   const people = html`<${PeopleMenu} narrow=${narrow} topic=${s.topic} memory=${s.memory} follow=${s.follow} onToggleMemory=${toggleMemory} onAllMemories=${() => set({ panel: 'memory' })} onFollow=${follow} canFollow=${s.step >= 2 && !s.busy}/>`;
   const exsShown = shown.filter(b => b.k === 'turn').map(b => b.ex);
   const viewMenu = html`<${Menu} label=${I.sliders} caret=${false} ariaLabel="Settings">
@@ -1823,7 +1841,7 @@ function App() {
     <div class="app" id="app">
       ${narrow
         ? html`<header class="topbar two-row"><div class="tb-row">${brand}<span class="grow"></span>${people}${viewMenu}</div><div class="tb-row">${topicMenu}${modelMenu}<span class="grow"></span>${memToggle}</div></header>`
-        : html`<header class="topbar"><div class="tb-left">${brand}</div><div class="tb-center">${topicMenu}</div><div class="tb-right">${people}${memToggle}${modelMenu}${viewMenu}${startBtn}</div></header>`}
+        : html`<header class="topbar"><div class="tb-left">${brand}</div><div class="tb-center">${topicMenu}</div><div class="tb-right">${s.vw >= 1400 && people}${memToggle}${modelMenu}${viewMenu}${startBtn}</div></header>`}
       <main class=${cx('main', wide && 'wide', wide && (dockOpen ? 'dock-open' : 'dock-closed'))}>
         <div class="chat-col">
         <div class="thread" ref=${threadRef} aria-label="Conversation">
